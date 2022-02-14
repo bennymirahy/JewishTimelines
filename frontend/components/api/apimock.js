@@ -59,6 +59,10 @@ const api = {
     },
     get_event(id){
         return mockasync(events.filter(event => event.id == id)[0])
+    },
+    remove_event(event){
+        events = events.filter(x => x.id !== event.id)
+        return mockasync(event)
     }
 };
 

@@ -7,7 +7,8 @@
         <v-text-field v-model="event.age" type="number" label="Age"></v-text-field>
         <v-text-field v-model="event.sourceAge" label="Source for the age"></v-text-field>
       </v-form>
-      <v-btn @click="save()" :loading="saving" >Submit</v-btn>
+      <v-btn @click="save()" :loading="saving" color="accent">Submit</v-btn>
+      <v-btn v-if="event.id" @click="remove()" :loading="removing" color="error" > Remove </v-btn>
   </template>
   </v-layout>
 </template>
@@ -28,7 +29,8 @@ export default {
         sourceAge: ''
       },
       loading: false,
-      saving: false
+      saving: false,
+      removing: false
     }
   },
   created () {
@@ -48,6 +50,13 @@ export default {
         this.$router.push({name: 'events'})
       })
       this.saving = false
+    },
+    remove(event) {
+        this.removing = true
+        AppApi.remove_event(this.event).then(response => {
+          this.$router.push({name: 'events'})
+        })
+        this.removing = false
     }
   }
 }
