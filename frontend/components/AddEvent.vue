@@ -53,7 +53,7 @@ export default {
     },
     remove(event) {
         this.removing = true
-        AppApi.remove_event(this.event).then(response => {
+        AppApi.remove_event(this.event.id).then(response => {
           this.$router.push({name: 'events'})
         })
         this.removing = false
