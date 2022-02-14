@@ -18,6 +18,23 @@ const api = {
     },
     list_todos(){
         return get('/api/list_todos');
+    },
+    list_events(){
+        return get('/api/events');
+    },
+    save_event(event){
+        // if(!event.id) {
+        //     event.id = ++ID
+        //     events.push(event)   
+        // }
+        // events.sort((a, b) => a.age - b.age)
+        return post('/api/events/save', {event: JSON.stringify(event)})
+    },
+    get_event(id){
+        return get(`/api/events/${id}`)
+    },
+    remove_event(id){
+        return post(`/api/events/${id}/remove`)
     }
 }
 export default api;
