@@ -31,6 +31,8 @@ class TestCrudEvent(TestCase):
         }
         r = client.post('/api/events/save', {'event': json.dumps(event)})
         self.assertEqual(200, r.status_code)
+
+
         # r1 = client.post('/api/add_todo', {'new_task': 'walk the dog'})
         # r2 = client.post('/api/add_todo', {'new_task': 'do the laundry'})
         # r3 = client.get('/api/list_todos')
