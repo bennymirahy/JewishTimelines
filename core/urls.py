@@ -9,5 +9,10 @@ urlpatterns = [
 
     url(r'^api/add_todo$', views.add_todo),
     url(r'^api/list_todos$', views.list_todos),
-    url(r'^api/events/save$', views.save_event)
+    url(r'^api/events/save$', views.save_event),
+    url(r'^api/events$', views.list_event),
+    url(r'^api/events/(?P<pk>\d+)/remove$', views.remove_event),
+    url(r'^api/events/(?P<pk>\d+)$', views.get_event)
+
+
 ]

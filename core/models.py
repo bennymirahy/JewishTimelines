@@ -29,3 +29,28 @@ class Todo(models.Model):
             'description': self.description,
             'done': self.done,
         }
+
+class Event(models.Model):
+    description = models.CharField(max_length=1024)
+    source = models.CharField(max_length=512)
+    age = models.IntegerField()
+    sourceAge = models.CharField(max_length=512)
+
+    def update_from_dict(self, d):
+        self.description = d['description']
+        self.source = d['source']
+        self.age = d['age']
+        self.sourceAge = d['sourceAge']
+        self.save()
+
+    def to_dict_json(self):
+        return {
+            'id': self.id,
+            'description': self.description,
+            'source': self.source,
+            'age': self.age,
+            'sourceAge': self.sourceAge
+        }
+
+    class Meta:
+        ordering = ('id',)

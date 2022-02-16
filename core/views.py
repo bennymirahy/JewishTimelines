@@ -60,6 +60,17 @@ def save_event(request):
     event_svc.save(event)
     return JsonResponse({})
 
+def list_event(request):
+    events = event_svc.list_event()
+    return JsonResponse(events, safe=False)
+
+def remove_event(request, pk):
+    event_svc.remove(int(pk))
+    return JsonResponse({})
+
+def get_event(request, pk):
+    event = event_svc.get(int(pk))
+    return JsonResponse(event)
 
 def _user2dict(user):
     d = {
